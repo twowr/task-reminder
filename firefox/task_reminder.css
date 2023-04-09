@@ -1,0 +1,13 @@
+.selection_bubble {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #4d4d4d;   
+    opacity: 0;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+    z-index: 1000;
+    -webkit-text-fill-color: #ffffff;
+    -moz-text-fill-color: #ffffff;
+    font-size: 3em;
+}
