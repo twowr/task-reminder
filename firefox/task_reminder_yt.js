@@ -1,4 +1,4 @@
-console.log("task-reminder(v1.0) is working")
+console.log("task-reminder(v1.1) is working")
 
 let popupDOM = document.createElement("div")
 popupDOM.setAttribute("class", "todo_list")
