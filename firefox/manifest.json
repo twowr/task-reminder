@@ -3,7 +3,7 @@
 	"name": "task reminder",
 	"version": "1.0",
 
-	"description": "remind you your todo list right after you got distracted, e.g right after a youtube video, right after x amount of yt shorts, etc",
+	"description": "Remind you your todo list right after you got distracted, e.g right after a youtube video, right after x amount of yt shorts, etc. Create your note by clicking on the extension, this will open a menu where you can enter your note and save it, said note will be display after a youtube video",
 
 	"icons": {
 		"512": "icon/icon.png"

@@ -1,13 +1,15 @@
 console.log("task-reminder(v1.0) is working")
 
 let popupDOM = document.createElement("div")
-popupDOM.setAttribute("class", "selection_bubble")
+popupDOM.setAttribute("class", "todo_list")
 popupDOM.style.width = "61.803398875vw"
 popupDOM.style.height = "92.705098312vh"
 document.body.appendChild(popupDOM)
 
-document.addEventListener("mousedown", function (_event) {
-    hidePopup()
+document.body.addEventListener("click", function (event) {
+    if (event.target.className !== "todo_list") {
+        hidePopup()
+    }
 }, false);
 
 document.addEventListener("yt-navigate-finish", (_event) => {
@@ -29,10 +31,10 @@ document.addEventListener("yt-navigate-finish", (_event) => {
 })
 
 function showPopup() {
-    browser.storage.local.get("todo").then((result) => { popupDOM.innerHTML = "<pre>" + result.todo + "</pre>" })
+    browser.storage.local.get("todo").then((result) => { popupDOM.innerHTML = result.todo })
     popupDOM.style.top = "calc((100vh - 90vh)/2)"
     popupDOM.style.left = "calc((100vw - 61.803398875vw)/2)"
-    popupDOM.style.opacity = 0.5
+    popupDOM.style.opacity = 0.75
     popupDOM.style.visibility = "visible"
 }
 
