@@ -1,4 +1,4 @@
-console.log("task-reminder(v1.2) is working")
+console.log("task-reminder(v1.2.1) is working")
 
 let popupDOM = document.createElement("div")
 popupDOM.setAttribute("class", "todo_list")
@@ -56,7 +56,7 @@ function run_extension_logic(state) {
     let is_watch = !(document.getElementsByTagName("ytd-watch-flexy")[0].attributes.hidden)
     let is_other = !is_short && !is_watch
 
-    // console.log("task-reminder: detect yt-navigate-finish")
+    // console.log("task-reminder: detect yt-navigate-finish"+state.short_count)
 
     if (is_watch) {
         // console.log("task-reminder: is watch")
@@ -79,21 +79,29 @@ function run_extension_logic(state) {
 
         let modulus = 3
 
-        let container =  document.getElementById("shorts-inner-container")
+        let container = document.getElementById("shorts-inner-container")
         let reels = [...container.getElementsByTagName("ytd-reel-video-renderer")]
 
+        if (state.short_count % modulus === 0) {
+            showPopup()
+        }
+
         reels.forEach((reel) => {
-            let videoElement =  reel.getElementsByTagName("video")[0]
-
-            videoElement.addEventListener("seeked", (_event) => {
-                state.short_count += 1
-
-                if (state.short_count % modulus === 0) {
-                    showPopup()
+            if (reel.attributes["is-active"]) {
+                if (reel.attributes["is-active"].value === "") {
+                    let videoElement = reel.getElementsByTagName("video")[0]
+    
+                    videoElement.addEventListener("seeked", (_event) => {
+                        state.short_count += 1
+    
+                        if (state.short_count % modulus === 0) {
+                            showPopup()
+                        }
+    
+                        // console.log("task-reminder: video seeked detected")
+                    })
                 }
-
-                // console.log("task-reminder: video seeked detected")
-            })
+            }
         })
     }
 
