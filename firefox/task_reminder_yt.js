@@ -1,4 +1,4 @@
-console.log("task-reminder(v1.1) is working")
+console.log("task-reminder(v1.2) is working")
 
 let popupDOM = document.createElement("div")
 popupDOM.setAttribute("class", "todo_list")
@@ -42,7 +42,7 @@ state.previousState = null
 state.currentState = null
 
 document.addEventListener("yt-navigate-finish", () => {
-    console.log("task-reminder: yt-navigate-finish detected")
+    // console.log("task-reminder: yt-navigate-finish detected")
 
     state.short_count += 1
 
@@ -56,12 +56,10 @@ function run_extension_logic(state) {
     let is_watch = !(document.getElementsByTagName("ytd-watch-flexy")[0].attributes.hidden)
     let is_other = !is_short && !is_watch
 
-    console.log(is_short)
-
-    console.log("task-reminder: detect yt-navigate-finish")
+    // console.log("task-reminder: detect yt-navigate-finish")
 
     if (is_watch) {
-        console.log("task-reminder: is watch")
+        // console.log("task-reminder: is watch")
         state.currentState = "watch"
 
         state.short_count = 0
@@ -71,12 +69,12 @@ function run_extension_logic(state) {
         videoElement.addEventListener("ended", (_event) => {
             showPopup()
 
-            console.log("task-reminder: video end detected")
+            // console.log("task-reminder: video end detected")
         })
     }
 
     if (is_short) {
-        console.log("task-reminder: is short")
+        // console.log("task-reminder: is short")
         state.currentState = "short"
 
         let modulus = 3
@@ -94,13 +92,13 @@ function run_extension_logic(state) {
                     showPopup()
                 }
 
-                console.log("task-reminder: video seeked detected")
+                // console.log("task-reminder: video seeked detected")
             })
         })
     }
 
     if (is_other) {
-        console.log("task-reminder: is other")
+        // console.log("task-reminder: is other")
         state.currentState = "other"
 
         state.short_count = 0
