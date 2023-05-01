@@ -10,7 +10,9 @@
 	},
 
 	"permissions": [
-		"storage"
+		"storage",
+		"tabs",
+		"activeTab"
 	],
 
 	"content_scripts": [
